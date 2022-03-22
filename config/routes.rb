@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :products
+  namespace :api do
+    resources :messages, only: [:index] do
+      collection do
+        get 'public'
+        get 'protected'
+        get 'admin'
+      end
+    end
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get '/404' => 'api/errors#not_found'
 end

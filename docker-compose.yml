@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  api:
+    build: .
+    image: api_rails_ruby_hello-world:basic-autorization
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
